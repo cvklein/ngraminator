@@ -101,4 +101,4 @@ def save_dataframe(df,filename,format='csv'):
     if format == 'excel':
         df.to_excel(filename+'.xlsx',index=False)
     else:
-        df.to_csv(filename+'.csv')
+        df.to_csv(filename+'.csv',index=False)
