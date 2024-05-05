@@ -1,6 +1,7 @@
 import difflib
 from collections import Counter
 import itertools
+import pandas as pd
 
 #these are the standard chinese text separators that I've been using. here as default
 separators = ['，','。','；','？','「','」','：','！','《','》','、','．']
@@ -10,7 +11,7 @@ def splitline(line, separators=['，','。','；','？','「','」','：','！',
         line = " ".join(line.split(s))
     return [x for x in line.split(' ') if x != '']
 
-def sequence_cleaner(rlist):   #this eliminates sequences that are contained in smaller sequences by iteratively comparing 
+def sequence_cleaner(rlist):   #this eliminates sequences that are contained in smaller sequences by iteratively comparing
     removeset = set()
     for a,b in itertools.combinations(rlist,2):
         if len(a) == len(b):
@@ -78,3 +79,21 @@ def print_sequence_matches(a_lines,b_lines,a_map,b_map,cutoff=4): #print out mat
             for entry in rlist:
                 oline = " ".join([a_map[x],b_map[y],entry,str(len(entry))])
                 print(oline)
+
+def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return a dataframe with sequences
+    amaps,bmaps,entries,len_es = [],[],[],[]  #probably a better way to build a datafram?
+    for x in range(len(a_lines)):
+        for y in range(len(b_lines)):
+            rlist = brute_sequence_matcher(a_lines[x],b_lines[y],cutoff)
+            for entry in rlist:
+                amaps.append(a_map[x])
+                bmaps.append(b_map[y])
+                entries.append(entry)
+                len_es.append(str(len(entry)))
+    df = pd.DataFrame
+    df['a_file'] = amaps
+    df['b_file'] = bmaps
+    df['match'] = entries
+    df['len'] = len_es
+    return df
+    
