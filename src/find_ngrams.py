@@ -2,7 +2,7 @@ import difflib
 from collections import Counter
 import itertools
 
-#these are the standard chinese text separators that I've been using. here as default 
+#these are the standard chinese text separators that I've been using. here as default
 separators = ['，','。','；','？','「','」','：','！','《','》','、','．']
 
 def splitline(line, separators=['，','。','；','？','「','」','：','！','《','》','、','．']):
@@ -47,9 +47,5 @@ def brute_sequence_matcher(a,b,min_length):
     return sequence_cleaner(list(set(rlist)))
 
 
-def pullchars(terms):
-    bs = []
-    for t in terms:
-        for tt in t:
-            bs.append(tt)
-    return bs
+def pullchars(terms):  #helper function to split a line into characters  
+    return list(terms)
