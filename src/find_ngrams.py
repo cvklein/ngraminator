@@ -79,5 +79,5 @@ def print_sequence_matches(a_lines,b_lines,a_map,b_map,cutoff=4): #print out mat
         for y in range(len(b_lines)):
             rlist = brute_sequence_matcher(a_lines[x],b_lines[y],cutoff)
             for entry in rlist:
-                oline = " ".join([a_map[x],b_map[y],entry,len(entry)])
+                oline = " ".join([a_map[x],b_map[y],entry,str(len(entry))])
                 print(oline)
