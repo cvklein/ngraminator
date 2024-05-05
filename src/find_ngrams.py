@@ -48,7 +48,7 @@ def brute_sequence_matcher(a,b,min_length):
 
 
 def pull_lines(filenames): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
-    if type(filenames) = str:   #allow to pass single filename
+    if type(filenames) == str:   #allow to pass single filename
         filenames = [filenames]
 
     lineno = 0
@@ -56,7 +56,10 @@ def pull_lines(filenames): #pull strings from a list of filenames, and also retu
     return_lines = []
 
     for filename in filenames:
-        base_filename = filename.split('/')[1].split('.')[0]
+        try:  #assign keep track of base filename for line_to_file. try/except done for cases where single file in local dir is passed
+            base_filename = filename.split('/')[1].split('.')[0]
+        except IndexError:
+            base_filename = filename
         f = open(filename,'r')
         for line in f:
             line = line.replace('\n','')
@@ -68,4 +71,4 @@ def pull_lines(filenames): #pull strings from a list of filenames, and also retu
                 return_lines.append("".join(splitline(line)))
                 line_to_file[lineno] = base_filename
                 lineno += 1
-    return return_lines,line_to_file 
+    return return_lines,line_to_file
