@@ -56,10 +56,7 @@ def pull_lines(filenames): #pull strings from a list of filenames, and also retu
     return_lines = []
 
     for filename in filenames:
-        try:  #assign keep track of base filename for line_to_file. try/except done for cases where single file in local dir is passed
-            base_filename = filename.split('/')[1].split('.')[0]
-        except IndexError:
-            base_filename = filename
+        base_filename = filename.split('/')[-1]
         f = open(filename,'r')
         for line in f:
             line = line.replace('\n','')
