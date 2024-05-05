@@ -90,10 +90,9 @@ def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return
                 bmaps.append(b_map[y])
                 entries.append(entry)
                 len_es.append(str(len(entry)))
-    df = pd.DataFrame
+    df = pd.DataFrame()
     df['a_file'] = amaps
     df['b_file'] = bmaps
     df['match'] = entries
     df['len'] = len_es
     return df
-    
