@@ -10,7 +10,7 @@ def splitline(line, separators=['，','。','；','？','「','」','：','！',
         line = " ".join(line.split(s))
     return [x for x in line.split(' ') if x != '']
 
-def sequence_cleaner(rlist):   #this eliminates sequences that are contained in smaller sequences
+def sequence_cleaner(rlist):   #this eliminates sequences that are contained in smaller sequences by iteratively comparing 
     removeset = set()
     for a,b in itertools.combinations(rlist,2):
         if len(a) == len(b):
