@@ -8,7 +8,7 @@ separators = ['，','。','；','？','「','」','：','！','《','》','、',
 def splitline(line, separators=['，','。','；','？','「','」','：','！','《','》','、','．']):
     for s in separators:
         line = " ".join(line.split(s))
-    return[x for x in line.split(' ') if x != '']
+    return [x for x in line.split(' ') if x != '']
 
 def sequence_cleaner(rlist):   #this eliminates sequences that are contained in smaller sequences
     removeset = set()
@@ -47,5 +47,25 @@ def brute_sequence_matcher(a,b,min_length):
     return sequence_cleaner(list(set(rlist)))
 
 
-def pullchars(terms):  #helper function to split a line into characters  
-    return list(terms)
+def pull_lines(filenames): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
+    if type(filenames) = str:   #allow to pass single filename
+        filenames = [filenames]
+
+    lineno = 0
+    line_to_file = {}
+    return_lines = []
+
+    for filename in filenames:
+        base_filename = filename.split('/')[1].split('.')[0]
+        f = open(filename,'r')
+        for line in f:
+            line = line.replace('\n','')
+            if line == "":
+                pass
+            elif line[0].isdigit():
+                pass
+            else:
+                return_lines.append("".join(splitline(line)))
+                line_to_file[lineno] = base_filename
+                lineno += 1
+    return return_lines,line_to_file 
