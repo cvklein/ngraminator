@@ -9,7 +9,7 @@ parser=argparse.ArgumentParser(prog='ngraminator',
 parser.add_argument("first_files")
 parser.add_argument("second_files")
 parser.add_argument("output_file")
-parser.add_argument('--cutoff',default=4,help="cutoff. Only matches >=cutoff will be found. Defaults to 4 characters")
+parser.add_argument('--cutoff',default=4,type=int,help="cutoff. Only matches >=cutoff will be found. Defaults to 4 characters")
 args=parser.parse_args()
 
 first_files = args.first_files
