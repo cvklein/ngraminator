@@ -4,11 +4,12 @@ from find_ngrams import pull_lines,print_sequence_matches,sequence_matcher_to_da
 
 
 parser=argparse.ArgumentParser(prog='ngraminator',
-                    description='Usage ngraminator firstfiles secondfiles outputfile',
+                    description='Usage ngraminator first_files second_files output_file',
                     epilog='')
 parser.add_argument("first_files")
 parser.add_argument("second_files")
 parser.add_argument("output_file")
+parser.add_argument('--cutoff',default=4,help="cutoff. Only matches >=cutoff will be found. Defaults to 4 characters")
 args=parser.parse_args()
 
 first_files = args.first_files
@@ -22,5 +23,5 @@ if second_files[-1] == "/":
 a_lines,a_map = pull_lines(glob(first_files))
 b_lines,b_map = pull_lines(glob(second_files))
 
-df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4)
+df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=args.cutoff)
 save_dataframe(df,args.output_file)
