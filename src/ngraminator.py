@@ -5,12 +5,11 @@ from find_ngrams import pull_lines,print_sequence_matches,sequence_matcher_to_da
 parser=argparse.ArgumentParser(prog='ngraminator',
                     description='Usage ngraminator firstfiles secondfiles outputfile',
                     epilog='')
-args=parser.parse_args()
 parser.add_argument("first_files")
 parser.add_argument("second_files")
 parser.add_argument("output_file")
 args=parser.parse_args()
 
 print(args.first_files)
-print(arg.second_files)
-print(arg.output_file)
+print(args.second_files)
+print(args.output_file)
