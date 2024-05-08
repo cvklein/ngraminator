@@ -11,9 +11,16 @@ parser.add_argument("second_files")
 parser.add_argument("output_file")
 args=parser.parse_args()
 
+first_files = args.first_files
+second_files = args.second_files
 
-a_lines,a_map = pull_lines(glob(args.first_files))
-b_lines,b_map = pull_lines(glob(args.second_files))
+if first_files[-1] == "/":
+    first_files += "*" #help glob work in an intuitive way
+if second_files[-1] == "/":
+    second_files += "*"
+
+a_lines,a_map = pull_lines(glob(first_files))
+b_lines,b_map = pull_lines(glob(second_files))
 
 df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4)
 save_dataframe(df,args.output_file)
