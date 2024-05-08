@@ -97,7 +97,7 @@ def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return
     df['len'] = len_es
     return df
 
-def save_dataframe(df,filename,format='csv'):
+def save_dataframe(df,filename,format='xlsx'):
     if format == 'excel':
         df.to_excel(filename+'.xlsx',index=False)
     else:
