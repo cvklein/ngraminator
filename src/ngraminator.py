@@ -1,7 +1,7 @@
 import argparse
 from glob import glob
 from find_ngrams import pull_lines,print_sequence_matches,sequence_matcher_to_dataframe,save_dataframe
-
+from tabulate import tabulate
 
 parser=argparse.ArgumentParser(prog='ngraminator',
                     description='Usage ngraminator first_files second_files output_file. If output_file is missing, print instead.',
@@ -26,6 +26,7 @@ b_lines,b_map = pull_lines(glob(second_files))
 
 df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=args.cutoff)
 if args.output_file == None:
-    print(df)
+
+    print(tabulate(df, showindex=False, headers=df.columns))
 else:
     save_dataframe(df,args.output_file,format=args.filetype)

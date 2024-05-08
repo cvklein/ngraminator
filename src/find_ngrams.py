@@ -95,6 +95,7 @@ def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return
     df['b_file'] = bmaps
     df['match'] = entries
     df['len'] = len_es
+    df['len'] = df['len'].astype(int)
     return df
 
 def save_dataframe(df,filename,format='excel'):
