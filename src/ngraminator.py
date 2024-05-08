@@ -27,6 +27,6 @@ b_lines,b_map = pull_lines(glob(second_files))
 df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=args.cutoff)
 if args.output_file == None:
 
-    print(tabulate(df, showindex=False, headers=df.columns))
+    print(tabulate(df, showindex=False, headers=df.columns)) #going back and forth on this, but if you add ,disable_numparse=True it'll left-justify the length 
 else:
     save_dataframe(df,args.output_file,format=args.filetype)
