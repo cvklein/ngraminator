@@ -6,7 +6,7 @@ import pandas as pd
 #these are the standard chinese text separators that I've been using. here as default
 separators = ['，','。','；','？','「','」','：','！','《','》','、','．']
 
-def splitline(line, separators=['，','。','；','？','「','」','：','！','《','》','、','．']):
+def splitline(line, separators=separators):
     for s in separators:
         line = " ".join(line.split(s))
     return [x for x in line.split(' ') if x != '']
@@ -48,7 +48,7 @@ def brute_sequence_matcher(a,b,min_length):
     return sequence_cleaner(list(set(rlist)))
 
 
-def pull_lines(filenames): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
+def pull_lines(filenames,separators=separators): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
     if type(filenames) == str:   #allow to pass single filename
         filenames = [filenames]
 
@@ -66,7 +66,7 @@ def pull_lines(filenames): #pull strings from a list of filenames, and also retu
             elif line[0].isdigit():
                 pass
             else:
-                return_lines.append("".join(splitline(line)))
+                return_lines.append("".join(splitline(line,separators)))
                 line_to_file[lineno] = base_filename
                 lineno += 1
     return return_lines,line_to_file
