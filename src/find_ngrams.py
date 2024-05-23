@@ -2,6 +2,8 @@ import difflib
 from collections import Counter
 import itertools
 import pandas as pd
+from tabulate import tabulate
+from glob import glob
 
 #these are the standard chinese text separators that I've been using. here as default
 separators = ['，','。','；','？','「','」','：','！','《','》','、','．']
@@ -103,3 +105,15 @@ def save_dataframe(df,filename,format='excel'):
         df.to_excel(filename+'.xlsx',index=False)
     else:
         df.to_csv(filename+'.csv',index=False)
+
+
+def process_input(first_files,second_files,output_file,cutoff,separators,filetype):
+    a_lines,a_map = pull_lines(glob(first_files),separators=separators)
+    b_lines,b_map = pull_lines(glob(second_files),separators=separators)
+
+    df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=cutoff)
+    if output_file == None:
+
+        print(tabulate(df, showindex=False, headers=df.columns)) #going back and forth on this, but if you add ,disable_numparse=True it'll left-justify the length
+    else:
+        save_dataframe(df,output_file,format=filetype)
