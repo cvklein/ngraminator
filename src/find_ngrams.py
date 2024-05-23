@@ -74,13 +74,13 @@ def pull_lines(filenames,separators=separators): #pull strings from a list of fi
     return return_lines,line_to_file
 
 
-def print_sequence_matches(a_lines,b_lines,a_map,b_map,cutoff=4): #print out matches; this is for testing.
-    for x in range(len(a_lines)):
-        for y in range(len(b_lines)):
-            rlist = brute_sequence_matcher(a_lines[x],b_lines[y],cutoff)
-            for entry in rlist:
-                oline = " ".join([a_map[x],b_map[y],entry,str(len(entry))])
-                print(oline)
+#def print_sequence_matches(a_lines,b_lines,a_map,b_map,cutoff=4): #print out matches; this is for testing.
+#    for x in range(len(a_lines)):
+#        for y in range(len(b_lines)):
+#            rlist = brute_sequence_matcher(a_lines[x],b_lines[y],cutoff)
+#            for entry in rlist:
+#                oline = " ".join([a_map[x],b_map[y],entry,str(len(entry))])
+#                print(oline)
 
 def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return a dataframe with sequences
     amaps,bmaps,entries,len_es = [],[],[],[]  #probably a better way to build a datafram?
