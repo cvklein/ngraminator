@@ -68,7 +68,7 @@ def doStuff():
     files2 = cleanup(directory2Select.folder_path)
     output_filename = outputselect.folder_path
     process_input_gui(files1,files2,output_filename,4,separators)
-
+    gui.destroy()
 
 
 folderPath = StringVar()
