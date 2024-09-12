@@ -13,6 +13,8 @@ gui = Tk()
 gui.geometry("800x400")
 gui.title("FC")
 
+
+
 #adpting from https://stackoverflow.com/questions/51877124/how-to-select-a-directory-and-store-it-into-a-variable-in-tkinter
 #but mutiple files rather than folders
 
@@ -33,26 +35,24 @@ class FolderSelect(Frame):
     def folder_path(self):
         return self.folderPath.get()
 
-#messy cleanup
+
+
+#messy cleanup of returned line from file select dialog
+
+def cleanup(s):
+    s = s[1:-2]
+    s = s.replace("'","")
+    s = s.replace(" /","/")
+    s = s.split(',')
+    return s
+
 def doStuff():
-    files1 = (directory1Select.folder_path)
-    files1 = files1[1:-2]
-    files1 = files1.replace("'","")
-    files1 = files1.replace(" /","/")
-    files1 = files1.split(',')
-    #print(files1)
-    #print(type(files1))
-    files2 = (directory2Select.folder_path)
-    files2 = files2[1:-2]
-    files2 = files2.replace("'","")
-    files2 = files2.replace(" /","/")
-    files2 = files2.split(',')
-    #print()
-    #print(files2)
-    #print(type(files1))
-    #print("\n\n\n\n\n\n")
-    #print("Doing stuff with folder", folder1, folder2)
+    files1 = cleanup(directory1Select.folder_path)
+
+    files2 = cleanup(directory2Select.folder_path)
     process_input_gui(files1,files2,'test.xlsx',4,separators)
+
+
 
 folderPath = StringVar()
 
@@ -61,6 +61,8 @@ directory1Select.grid(row=0)
 
 directory2Select = FolderSelect(gui,"Select Folder 2")
 directory2Select.grid(row=1)
+
+
 
 
 c = ttk.Button(gui, text="Ngraminate!", command=doStuff)
