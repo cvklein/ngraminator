@@ -68,7 +68,9 @@ def doStuff():
 
     files2 = cleanup(directory2Select.folder_path)
     output_filename = outputselect.folder_path
-    process_input_gui(files1,files2,output_filename,4,separators)
+    cutoff = n.get()
+    cutoff = int(cutoff)
+    process_input_gui(files1,files2,output_filename,cutoff,separators)
     gui.destroy()
 
 
@@ -78,14 +80,14 @@ gui.title("FC")
 
 folderPath = StringVar()
 
-directory1Select = FolderSelect(gui,"Select first file(s)".ljust(20))
-directory1Select.grid(row=0, pady=10)
+directory1Select = FolderSelect(gui,"Select file(s) one".ljust(20))
+directory1Select.grid(row=0, padx=1, pady=10)
 
-directory2Select = FolderSelect(gui,"Select second file(s)".ljust(20))
-directory2Select.grid(row=1,pady=10)
+directory2Select = FolderSelect(gui,"Select file(s) two".ljust(20))
+directory2Select.grid(row=1,padx=1,pady=10)
 
 outputselect = SaveSelect(gui,"Select output file".ljust(20))
-outputselect.grid(row=2,pady=10)
+outputselect.grid(row=2,padx=1,pady=10)
 
 cutoff_label = Label(gui, text = 'Enter cutoff')
 cutoff_label.grid(row = 1, column=3)
