@@ -53,6 +53,9 @@ class SaveSelect(Frame):
     def folder_path(self):
         return self.folderPath.get()
 
+
+
+
 #messy cleanup of returned line from file select dialog
 
 def cleanup(s):
@@ -74,18 +77,22 @@ def doStuff():
 folderPath = StringVar()
 
 directory1Select = FolderSelect(gui,"Select Folder 1".ljust(20))
-directory1Select.grid(row=0)
+directory1Select.grid(row=0, pady=10)
 
 directory2Select = FolderSelect(gui,"Select Folder 2".ljust(20))
-directory2Select.grid(row=1)
+directory2Select.grid(row=1,pady=10)
 
 outputselect = SaveSelect(gui,"Select output file".ljust(20))
-outputselect.grid(row=2)
+outputselect.grid(row=2,pady=10)
 
-#inputbox = tk.Entry(root)
-#textBox.insert(0, "4")
+cutoff_label = Label(gui, text = 'Select cutoff')
+cutoff_label.grid(row = 1, column=4,padx=10)
+cutoff_var = IntVar()
+n = Entry(gui, textvariable=cutoff_var)
+n.grid(row=1,column=5)
+
 
 
 c = ttk.Button(gui, text="Ngraminate!", command=doStuff)
-c.grid(row=6,column=0)
+c.grid(row=3,column=2,pady=50)
 gui.mainloop()
