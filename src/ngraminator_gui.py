@@ -65,13 +65,16 @@ def cleanup(s):
 
 def doStuff():
     files1 = cleanup(directory1Select.folder_path)
-
     files2 = cleanup(directory2Select.folder_path)
     output_filename = outputselect.folder_path
     cutoff = n.get()
     cutoff = int(cutoff)
-    process_input_gui(files1,files2,output_filename,cutoff,separators)
-    gui.destroy()
+    #basic validation:
+    if files1==[''] or files2==[''] or output_filename=='': #kick back to main loop
+        return
+    else:
+        process_input_gui(files1,files2,output_filename,cutoff,separators)
+        gui.destroy()
 
 
 gui = Tk()
