@@ -26,7 +26,7 @@ class FolderSelect(Frame):
         self.lblName.grid(row=0,column=0)
         self.entPath = Entry(self, textvariable=self.folderPath)
         self.entPath.grid(row=0,column=1)
-        self.btnFind = ttk.Button(self, text="Browse For Files",command=self.setFolderPath)
+        self.btnFind = ttk.Button(self, text="Browse",command=self.setFolderPath)
         self.btnFind.grid(row=0,column=2)
     def setFolderPath(self):
         folder_selected = filedialog.askopenfilenames() #note that this allows for selection of multiple filenames
@@ -43,7 +43,7 @@ class SaveSelect(Frame):
         self.lblName.grid(row=0,column=0)
         self.entPath = Entry(self, textvariable=self.folderPath)
         self.entPath.grid(row=0,column=1)
-        self.btnFind = ttk.Button(self, text="Select file to save to",command=self.setFolderPath)
+        self.btnFind = ttk.Button(self, text="Browse",command=self.setFolderPath)
         self.btnFind.grid(row=0,column=2)
     def setFolderPath(self):
         data = [('xlsx(*.xlsx)', '*.xlsx')]
@@ -73,18 +73,19 @@ def doStuff():
 
 folderPath = StringVar()
 
-directory1Select = FolderSelect(gui,"Select Folder 1")
+directory1Select = FolderSelect(gui,"Select Folder 1".ljust(20))
 directory1Select.grid(row=0)
 
-directory2Select = FolderSelect(gui,"Select Folder 2")
+directory2Select = FolderSelect(gui,"Select Folder 2".ljust(20))
 directory2Select.grid(row=1)
 
-outputselect = SaveSelect(gui,"Select output file")
+outputselect = SaveSelect(gui,"Select output file".ljust(20))
 outputselect.grid(row=2)
 
-
+#inputbox = tk.Entry(root)
+#textBox.insert(0, "4")
 
 
 c = ttk.Button(gui, text="Ngraminate!", command=doStuff)
-c.grid(row=4,column=0)
+c.grid(row=6,column=0)
 gui.mainloop()
