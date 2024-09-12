@@ -103,6 +103,8 @@ def sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=4): #return
 def save_dataframe(df,filename,format='excel'):
     if format == 'excel':
         df.to_excel(filename+'.xlsx',index=False)
+    elif format == 'guiexcel':  #tkinter gives this back with file extension
+        df.to_excel(filename,index=False)
     else:
         df.to_csv(filename+'.csv',index=False)
 
@@ -128,4 +130,4 @@ def process_input_gui(first_files,second_files,output_file,cutoff,separators):
 
         print(tabulate(df, showindex=False, headers=df.columns)) #going back and forth on this, but if you add ,disable_numparse=True it'll left-justify the length
     else:
-        save_dataframe(df,output_file,format='excel')
+        save_dataframe(df,output_file,format='guiexcel')
