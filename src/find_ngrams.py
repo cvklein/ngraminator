@@ -117,3 +117,15 @@ def process_input(first_files,second_files,output_file,cutoff,separators,filetyp
         print(tabulate(df, showindex=False, headers=df.columns)) #going back and forth on this, but if you add ,disable_numparse=True it'll left-justify the length
     else:
         save_dataframe(df,output_file,format=filetype)
+
+#don't use glob, because we're just passing lists. don't allow selection of filetype
+def process_input_gui(first_files,second_files,output_file,cutoff,separators):
+    a_lines,a_map = pull_lines(first_files,separators=separators)
+    b_lines,b_map = pull_lines(second_files,separators=separators)
+
+    df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=cutoff)
+    if output_file == None:
+
+        print(tabulate(df, showindex=False, headers=df.columns)) #going back and forth on this, but if you add ,disable_numparse=True it'll left-justify the length
+    else:
+        save_dataframe(df,output_file,format='excel')
