@@ -20,7 +20,7 @@ class FolderSelect(Frame):
     def __init__(self,parent=None,folderDescription="",**kw):
         Frame.__init__(self,master=parent,**kw)
         self.folderPath = StringVar()
-        self.lblName = Label(self, text=folderDescription)
+        self.lblName = Label(self, text=folderDescription,width=20)
         self.lblName.grid(row=0,column=0)
         self.entPath = Entry(self, textvariable=self.folderPath)
         self.entPath.grid(row=0,column=1)
@@ -37,7 +37,7 @@ class SaveSelect(Frame):
     def __init__(self,parent=None,folderDescription="",**kw):
         Frame.__init__(self,master=parent,**kw)
         self.folderPath = StringVar()
-        self.lblName = Label(self, text=folderDescription)
+        self.lblName = Label(self, text=folderDescription,width=20)
         self.lblName.grid(row=0,column=0)
         self.entPath = Entry(self, textvariable=self.folderPath)
         self.entPath.grid(row=0,column=1)
@@ -79,21 +79,21 @@ def doStuff():
 
 gui = Tk()
 gui.geometry("800x400")
-gui.title("FC")
+gui.title("Ngraminator!")
 
 folderPath = StringVar()
 
-directory1Select = FolderSelect(gui,"Select file(s) one".ljust(20))
-directory1Select.grid(row=0, padx=1, pady=10)
+directory1Select = FolderSelect(gui,"Select first file(s) ")
+directory1Select.grid(row=0, pady=10)
 
-directory2Select = FolderSelect(gui,"Select file(s) two".ljust(20))
-directory2Select.grid(row=1,padx=1,pady=10)
+directory2Select = FolderSelect(gui,"Select second file(s) ")
+directory2Select.grid(row=1,pady=10)
 
-outputselect = SaveSelect(gui,"Select output file".ljust(20))
-outputselect.grid(row=2,padx=1,pady=10)
+outputselect = SaveSelect(gui,"Select output file ")
+outputselect.grid(row=2,pady=10)
 
 cutoff_label = Label(gui, text = 'Enter cutoff')
-cutoff_label.grid(row = 1, column=3)
+cutoff_label.grid(row = 1, column=3,padx=50)
 cutoff_var = IntVar()
 cutoff_var.set(4)
 n = Entry(gui, width=2, textvariable=cutoff_var)
@@ -101,7 +101,7 @@ n.grid(row=1,column=4)
 
 
 
-c = ttk.Button(gui, text="Ngraminate!", command=doStuff)
-c.grid(row=3,column=2,pady=50)
+c = ttk.Button(gui, text="Ngraminate!", command=doStuff,width=30)
+c.grid(row=3,column=0,pady=50)
 
 gui.mainloop()
