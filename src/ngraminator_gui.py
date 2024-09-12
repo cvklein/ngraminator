@@ -35,7 +35,23 @@ class FolderSelect(Frame):
     def folder_path(self):
         return self.folderPath.get()
 
-
+class SaveSelect(Frame):
+    def __init__(self,parent=None,folderDescription="",**kw):
+        Frame.__init__(self,master=parent,**kw)
+        self.folderPath = StringVar()
+        self.lblName = Label(self, text=folderDescription)
+        self.lblName.grid(row=0,column=0)
+        self.entPath = Entry(self, textvariable=self.folderPath)
+        self.entPath.grid(row=0,column=1)
+        self.btnFind = ttk.Button(self, text="Select file to save to",command=self.setFolderPath)
+        self.btnFind.grid(row=0,column=2)
+    def setFolderPath(self):
+        data = [('xlsx(*.xlsx)', '*.xlsx')]
+        folder_selected = filedialog.asksaveasfilename(filetypes = data, defaultextension = data) #note that this allows for selection of multiple filenames
+        self.folderPath.set(folder_selected)
+    @property
+    def folder_path(self):
+        return self.folderPath.get()
 
 #messy cleanup of returned line from file select dialog
 
@@ -50,7 +66,8 @@ def doStuff():
     files1 = cleanup(directory1Select.folder_path)
 
     files2 = cleanup(directory2Select.folder_path)
-    process_input_gui(files1,files2,'test.xlsx',4,separators)
+    output_filename = outputselect.folder_path
+    process_input_gui(files1,files2,output_filename,4,separators)
 
 
 
@@ -61,6 +78,9 @@ directory1Select.grid(row=0)
 
 directory2Select = FolderSelect(gui,"Select Folder 2")
 directory2Select.grid(row=1)
+
+outputselect = SaveSelect(gui,"Select output file")
+outputselect.grid(row=2)
 
 
 
