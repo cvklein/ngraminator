@@ -79,8 +79,6 @@ gui = Tk()
 gui.geometry("800x400")
 gui.title("Ngraminator!")
 
-folderPath = StringVar()
-
 
 
 directory1Select = FolderSelect(gui,"Select first file(s) ")
