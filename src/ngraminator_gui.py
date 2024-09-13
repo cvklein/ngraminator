@@ -11,8 +11,6 @@ separators = ['，','。','；','？','「','」','：','！','《','》','、',
 
 
 
-
-
 #adpting from https://stackoverflow.com/questions/51877124/how-to-select-a-directory-and-store-it-into-a-variable-in-tkinter
 #but mutiple files rather than folders
 
@@ -82,6 +80,8 @@ gui.geometry("800x400")
 gui.title("Ngraminator!")
 
 folderPath = StringVar()
+
+
 
 directory1Select = FolderSelect(gui,"Select first file(s) ")
 directory1Select.grid(row=0, pady=10)
