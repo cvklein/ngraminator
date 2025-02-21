@@ -51,4 +51,13 @@ Important caveat: I made this for my partner because she cares a lot about textu
 - Split larger texts automatically in the background to keep things snappy.   
 - Implement a progress bar in both.
 - Let GUI output to screen.
-- Let user suppress digit dropping -- this can just be a flag. 
+- Let user suppress digit dropping -- this can just be a flag.
+
+
+###  License, Citation, Contact information
+
+This software is released under the GNU General Public License version 3 (GPL3.0) [https://opensource.org/licenses/GPL-3.0](https://opensource.org/licenses/GPL-3.0)   
+
+If you use this package, I'd appreciate a citation -- for now, just mention the package and let me know about it.
+
+I can be reached at cvklein@gmail.com.
