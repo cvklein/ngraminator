@@ -38,7 +38,7 @@ def brute_sequence_matcher(a,b,min_length):
     rlist = []
     while not done:
         done = True
-        for start in range(0,len(a)-matchlen):
+        for start in range(0,len(a)-matchlen+1):
             comp = a[start:start+matchlen]
             try:
                 _ = b.index(comp)
