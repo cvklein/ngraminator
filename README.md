@@ -28,15 +28,13 @@ Ngramminator wants plain text files. You should make sure that the encoding used
 
 Ngramminator cares about newlines, and shouldn't match across them. If you're getting weird results, make sure your text is split up the way you'd like it to be.
 
-<!--
-In addition to the ordinary separators, Ngramminator gets rid of Arabic numerals, on the assumption that these are later additions. If your text needs to keep those in... let me know.
--->
+
 
 The code to find the largest non-overlapping match has a bit of a brute force component. This doesn't matter that much because Chinese texts are pretty small and  computers are fast. However, if you put in a single big file (say, the entire *Shiji*) it can take upwards of a few minutes to run. It will look hung while it runs. It's a good time for a cup of tea. Or you can split your file up into smaller chapters; in general, smaller files are much faster.
 
-By default, there is a set of common punctuation characters that ngramminator will automatically strip out before doing the comparison. If you're getting unexpected results, try using the ```---separators``` option with a handmade file of the stuff you want to get rid of. Note that right now it should (I think) preserve Arabic numerals; that will be a flag soon.
+By default, there is a set of common punctuation characters that ngramminator will automatically strip out before doing the comparison. If you're getting unexpected results, try using the ```---separators``` option with a handmade file of the stuff you want to get rid of.
 
-
+Ngramminator will ignore the entire line if it begins with an Arabic numeral,  on the assumption that these are later additions. If you need these, use the ```--preserve_digit_lines``` flag (only available from command line)
 
 
 
@@ -45,17 +43,15 @@ By default, there is a set of common punctuation characters that ngramminator wi
 
 This is still an experimental project! It seems to work pretty well, but use at your own risk.
 
-Important caveat: *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.* I made this for my partner because she cares a lot about textual parallelism. Rather than tweak filenames for her each time, I've put the original code together in a handy  package so she play with it herself as needed. 
+Important caveat: *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.* I made this for my partner because she cares a lot about textual parallelism. Rather than tweak filenames for her each time, I've put the original code together in a handy  package so she play with it herself as needed.
 
-(13 Sep 2026: I finally made this public, in part in order to encourage myself to build some unit tests.)
+13 Sep 2026: I finally made this public! Feedback very welcome
 
 
 ### Still todo:
-- Really need a proper test suite.
 - Split larger texts automatically in the background to keep things snappy.   
-- Implement a progress bar in both.
-- Let GUI output to screen.
-- Let user ues or suppress digit dropping -- this should be implemented but is not.
+- Implement a progress bar.
+- Let GUI output to screen for testing
 
 
 ###  License, Citation, Contact information
