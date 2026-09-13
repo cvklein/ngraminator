@@ -1,5 +1,5 @@
 # ngraminator
-A tool for running ngram analyses, specifically geared towards Chinese texts. Pick two texts, or two collections of texts, specify the minimum n-gram overlap you'd like, and let it rip. You'll get back a file with the corresponding filenames for each text, the length of the overlap, and the overlap itself.
+A tool for running ngram analyses, specifically geared towards classical Chinese texts. Pick two texts, or two collections of texts, specify the minimum n-gram overlap you'd like, and let it rip. You'll get back a file with the corresponding filenames for each text, the length of the overlap, and the overlap itself.
 
 Ngraminator works pretty hard to give the largest non-overlapping matches it can find. So if a text has AAABBB and another text has AAABB it will return AAABB but *not* AA, AAB, etc.
 
@@ -34,7 +34,7 @@ In addition to the ordinary separators, Ngramminator gets rid of Arabic numerals
 
 The code to find the largest non-overlapping match has a bit of a brute force component. This doesn't matter that much because Chinese texts are pretty small and  computers are fast. However, if you put in a single big file (say, the entire *Shiji*) it can take upwards of a few minutes to run. It will look hung while it runs. It's a good time for a cup of tea. Or you can split your file up into smaller chapters; in general, smaller files are much faster.
 
-By default, there is a set of common punctuation characters that ngramminator will automatically strip out before doing the comparison. If you're getting unexpected results, try using the ```---separators``` option with a handmade file of the stuff you want to get rid of.   
+By default, there is a set of common punctuation characters that ngramminator will automatically strip out before doing the comparison. If you're getting unexpected results, try using the ```---separators``` option with a handmade file of the stuff you want to get rid of. Note that right now it should (I think) preserve Arabic numerals; that will be a flag soon.
 
 
 
@@ -45,7 +45,7 @@ By default, there is a set of common punctuation characters that ngramminator wi
 
 This is still an experimental project! It seems to work pretty well, but use at your own risk.
 
-Important caveat: I made this for my partner because she cares a lot about textual parallelism. Rather than  tweak filenames for her each time, I've put it together in a handy little package so she could do it herself as needed. *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.*
+Important caveat: *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.* I made this for my partner because she cares a lot about textual parallelism. Rather than tweak filenames for her each time, I've put the original code together in a handy  package so she play with it herself as needed. 
 
 (13 Sep 2026: I finally made this public, in part in order to encourage myself to build some unit tests.)
 
@@ -55,7 +55,7 @@ Important caveat: I made this for my partner because she cares a lot about textu
 - Split larger texts automatically in the background to keep things snappy.   
 - Implement a progress bar in both.
 - Let GUI output to screen.
-- Let user ues or suppress digit dropping -- this should be implemented but is not. 
+- Let user ues or suppress digit dropping -- this should be implemented but is not.
 
 
 ###  License, Citation, Contact information
