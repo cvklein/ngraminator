@@ -17,7 +17,7 @@ Options:
 ```--filetype``` Type of output file. Can be 'excel' (.xlsx) or 'csv'. Defaults to excel.  
 ```--separators``` This allows you to specify a file with a list of separators to override the default list. Should contain a single line.  Each character on that line will be used.    
 ```--print_separators``` Print the default list of separators and quit.   
-```--preserve_digit_lines``` Preserve lines that begin with an Arabic numeral
+```--preserve_digit_lines``` Preserve lines that begin with an Arabic numeral.
 
 If you want to use the GUI, just run (either from the terminal or by double-clicking ```ngraminator_gui.py```). Usage is the same as above, though you can't select new separators this way and you must output to file.
 
@@ -35,7 +35,7 @@ The code to find the largest non-overlapping match has a bit of a brute force co
 
 By default, there is a set of common punctuation characters that ngramminator will automatically strip out before doing the comparison. If you're getting unexpected results, try using the ```---separators``` option with a handmade file of the stuff you want to get rid of.
 
-Ngramminator will ignore the entire line if it begins with an Arabic numeral,  on the assumption that these are later additions. If you need these, use the ```--preserve_digit_lines``` flag (only available from command line)
+Ngramminator will ignore the entire line if it begins with an Arabic numeral,  on the assumption that these are later additions. If you need these, use the ```--preserve_digit_lines``` flag (only available from the command line)
 
 
 
@@ -44,7 +44,7 @@ Ngramminator will ignore the entire line if it begins with an Arabic numeral,  o
 
 This is still an experimental project! It seems to work pretty well, but use at your own risk.
 
-Important caveat: *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.* I made this for my partner because she cares a lot about textual parallelism. Rather than tweak filenames for her each time, I've put the original code together in a handy  package so she play with it herself as needed.
+Important caveat: *I do not know Classical Chinese. I am literally Searle's [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room) here.* I made this for my partner because she cares a lot about textual parallelism. Rather than tweak filenames for her each time, I've put the original code together in a handy package so she can fiddle  with it herself as needed.
 
 13 Sep 2026: I finally made this public! Feedback very welcome
 
