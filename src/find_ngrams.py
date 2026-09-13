@@ -109,7 +109,7 @@ def save_dataframe(df,filename,format='excel'):
         df.to_csv(filename+'.csv',index=False)
 
 
-def process_input(first_files,second_files,output_file,cutoff,separators,filetype):
+def process_input(first_files,second_files,output_file,cutoff,separators,filetype, preserve_digits=False):
     a_lines,a_map = pull_lines(glob(first_files),separators=separators)
     b_lines,b_map = pull_lines(glob(second_files),separators=separators)
 

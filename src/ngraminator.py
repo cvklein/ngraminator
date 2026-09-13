@@ -14,12 +14,14 @@ parser.add_argument('--cutoff',default=4,type=int,help="cutoff. Only matches >=c
 parser.add_argument('--filetype',default='excel',choices=["excel","csv"],help="output filetype. Defaults to excel.")
 parser.add_argument('--separators',default=None,help="specify a file with a list of separators to override the default list. Should contain a single line, and each character on that line will be used.")
 parser.add_argument('--print_separators',action='store_true', help="Print the default list of separators and quit.")
+parser.add_argument('--preserve_digits', default=False, action='store_true',help="Set to keep arabic numerals in text (otherwise they're removed)")
 args=parser.parse_args()
 
 
 if args.print_separators:
     print(" ".join(default_separators))
     exit()
+
 
 first_files = args.first_files
 second_files = args.second_files
@@ -40,4 +42,4 @@ else:
     separators=list(f.readline())
     f.close()
 
-process_input(first_files,second_files,args.output_file,args.cutoff,separators,args.filetype)
+process_input(first_files,second_files,args.output_file,args.cutoff,separators,args.filetype,preserve_digits=args.preserve_digits)
