@@ -17,6 +17,7 @@ Options:
 ```--filetype``` Type of output file. Can be 'excel' (.xlsx) or 'csv'. Defaults to excel.  
 ```--separators``` This allows you to specify a file with a list of separators to override the default list. Should contain a single line.  Each character on that line will be used.    
 ```--print_separators``` Print the default list of separators and quit.   
+```--preserve_digit_lines``` Preserve lines that begin with an Arabic numeral
 
 If you want to use the GUI, just run (either from the terminal or by double-clicking ```ngraminator_gui.py```). Usage is the same as above, though you can't select new separators this way and you must output to file.
 
