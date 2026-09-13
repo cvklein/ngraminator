@@ -63,4 +63,4 @@ This software is released under the GNU General Public License version 3 (GPL3.0
 
 If you use this package, I'd appreciate a citation -- for now, just mention the package and let me know about it.
 
-I can be reached at cvklein@gmail.com.
+I can be reached at cvklein@gmail.com. Thanks to Esther Klein for years of beta testing. 
