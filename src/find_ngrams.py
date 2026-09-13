@@ -50,7 +50,7 @@ def brute_sequence_matcher(a,b,min_length):
     return sequence_cleaner(list(set(rlist)))
 
 
-def pull_lines(filenames,separators=separators): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
+def pull_lines(filenames,separators=separators, preserve_digit_lines=False): #pull strings from a list of filenames, and also return a dictionary mapping line to filenames
     if type(filenames) == str:   #allow to pass single filename
         filenames = [filenames]
 
@@ -65,7 +65,7 @@ def pull_lines(filenames,separators=separators): #pull strings from a list of fi
             line = line.replace('\n','')
             if line == "":
                 pass
-            elif line[0].isdigit():
+            elif line[0].isdigit() and not preserve_digit_lines:
                 pass
             else:
                 return_lines.append("".join(splitline(line,separators)))
@@ -109,9 +109,9 @@ def save_dataframe(df,filename,format='excel'):
         df.to_csv(filename+'.csv',index=False)
 
 
-def process_input(first_files,second_files,output_file,cutoff,separators,filetype, preserve_digits=False):
-    a_lines,a_map = pull_lines(glob(first_files),separators=separators)
-    b_lines,b_map = pull_lines(glob(second_files),separators=separators)
+def process_input(first_files,second_files,output_file,cutoff,separators,filetype, preserve_digit_lines):
+    a_lines,a_map = pull_lines(glob(first_files),separators=separators,preserve_digit_lines=preserve_digit_lines)
+    b_lines,b_map = pull_lines(glob(second_files),separators=separators,preserve_digit_lines=preserve_digit_lines)
 
     df = sequence_matcher_to_dataframe(a_lines,b_lines,a_map,b_map,cutoff=cutoff)
     if output_file == None:
